@@ -1,0 +1,395 @@
+/****************************************** Left section CSS ******************************************/
+
+#left-coloumn {
+  background-image: linear-gradient(#f96332, #fd4a0e);
+  /* background-color: #f96332; */
+  height: 100%;
+  width: 210px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  /* padding-top: 20px; */
+  padding: 15px 15px;
+}
+
+#mainLocationsDiv {
+  border-bottom: 1px solid white;
+  border-top: 2px solid white;
+  height: 500px;
+  overflow: auto;
+  /* margin-top: 5px; */
+}
+
+#navbarLocationsDiv {
+  border-bottom: 1px solid white;
+  border-top: 2px solid white;
+  height: 500px;
+  overflow: auto;
+  /* margin-top: 5px; */
+}
+
+.location_card {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  padding: 6px;
+  transition: 0.3s;
+  cursor: pointer;
+  color: white;
+}
+
+.location_card h3 {
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  /* color: white; */
+  font-weight: 530;
+}
+
+.location_card p {
+  /* font-family: "Roboto", sans-serif; */
+  font-family: "Lato", sans-serif;
+  line-height: 1.5;
+  /* color: white; */
+  font-size: 0.7rem;
+}
+.deleteGeolocationBtn {
+  /* font-family: "Roboto", sans-serif; */
+  font-family: "Lato", sans-serif;
+  /* line-height: 1.5; */
+  margin: auto;
+  text-decoration: none;
+  border: none;
+  font-size: 0.75rem;
+  display: none;
+  transition: 0.6s;
+}
+
+
+.deleteGeolocationBtn:hover {
+  /* transform: translateY(-3px); */
+  transform: scale(1.15);
+  /* transition: 0.7s; */
+}
+
+.location_card:hover {
+  background-color: white;
+  color: #f96332;
+}
+
+/* .location_card:hover #deleteGeolocationBtn {
+  display: block;
+} */
+
+.active-geolocation .deleteGeolocationBtn {
+  display: block;
+}
+
+.active-geolocation {
+  background-color: white;
+  color: #f96332;
+}
+
+.location_card:active, .location_card:focus {
+  background-color: white;
+  color: #f96332;
+  /* box-shadow: inset 0 0 2px rgb(0, 0, 0); */
+}
+
+
+#loaderGeolocations {
+  color: white;
+  padding: 7px 7px 7px 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  display: none;
+}
+
+#loaderSensor {
+  /*display: none;*/
+  border: 2px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 2px solid #f96332;
+  margin: 5px 0px;
+  width: 25px;
+  height: 25px;
+  -webkit-animation: spin 0.5s linear infinite; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+#left-coloumn a {
+  color: white;
+  /* margin: 10px 0px; */
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 1px solid white;
+  padding: 7px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#left-coloumn a:hover {
+  color: #f96332;
+  background-color: white;
+}
+
+#menu a {
+  color: white;
+  /* margin: 10px 0px; */
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 1px solid white;
+  padding: 7px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#menu a:hover {
+  color: #f96332;
+  background-color: white;
+}
+
+/****************************************** Center Body CSS ******************************************/
+
+#right-coloumn {
+  margin-left: 225px;
+}
+
+.marker:hover {
+  cursor: crosshair;
+}
+
+.permanentMarker {
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  font-size: 1.4rem;
+}
+
+.geoMarker {
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+#geoMap {
+  /* position: absolute; */
+  display: block;
+  width: 100%;
+  height: 550px;
+}
+
+#currentLocation {
+  margin: 40px 10px 0px 50px;
+  display: none;
+}
+
+#currentLocation p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+  color: #232b2b;
+}
+
+#mainSensorsDiv {
+  min-height: 180px;
+  padding: 10px 30px;
+  margin: 30px 0px;
+}
+
+.sensor-data-card {
+  padding: 10px;
+  background-color: white;
+  margin: 0px 30px;
+  border-left: 3px solid #f96332;
+  box-shadow: 1px 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.sensor-data-card-sensor-name {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: #232b2b;
+}
+
+.sensor-data-card-sensor-weight {
+  color: #c0c0c0;
+  font-size: 0.85rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.sensor-data-card-sensor-value {
+  color: #232b2b;
+  font-size: 2.3rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.sensor-data-card-sensor-time {
+  color: #a0a0a0;
+  font-size: 0.8rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 5px;
+}
+
+#data {
+  margin: 60px;
+}
+
+#inside-map {
+  display: block;
+  width:100%;
+  max-height:550px;
+}
+
+#insideImage {
+  margin: 30px 60px;
+  border: 1px solid #f96332;
+}
+
+
+#imageButtons {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  margin: 20px;
+}
+
+#imageButtons button {
+  color: #f96332;
+  background: white;
+  border: 1px solid #f96332;
+  padding: 10px 15px;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+  margin: auto;
+}
+#imageButtons button:hover {
+  background: #f96332;
+  color: white;
+}
+
+#coords {
+  color: white;
+  background: #f96332;
+  padding: 10px 25px;
+  margin: auto;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.image-btn-and-dragger {
+  margin: 120px auto;
+  width: 60%;
+  text-align: center;
+}
+
+.file-upload-btn {
+  color: #f96332;
+  background: white;
+  border: 1px solid #f96332;
+  padding: 10px 15px;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.file-upload-btn:hover {
+  background: #f96332;
+  color: white;
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+  margin: 20px;
+}
+
+.file-upload-input {
+  position: absolute;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  margin-top: 20px;
+  width: 100%;
+  border: 2px dashed #f96332;
+  position: relative;
+}
+
+.image-title-wrap {
+  padding: 0 15px 15px 15px;
+  color: #222;
+}
+
+.drag-text {
+  text-align: center;
+}
+
+.drag-text h3 {
+  font-size: 0.9rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #f96332;
+  padding: 40px 0;
+}
+
+.file-upload-image {
+  max-height: 70%;
+  max-width: 70%;
+  margin: 20px auto 10px auto;
+  /* padding: 20px; */
+}
+
+.remove-image {
+  margin: 10px;
+  color: #f96332;
+  padding: 10px 15px;
+  border: 1px solid #f96332;
+  transition: all .2s ease;
+  outline: none;
+  font-weight: 400;
+  background: none;
+}
+
+.remove-image:hover {
+  background: #f96332;
+  color: white;
+  border-color: #f96332;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  outline: none;
+  border: none;
+}

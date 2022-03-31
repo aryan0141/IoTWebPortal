@@ -1,0 +1,64 @@
+<% bodyClass='body-class' %>
+    <% cssFile='css/login.css' %>
+
+
+
+        <div class="login-page">
+            <h1>Login</h1>
+            <form class="form" action="/login" method="POST">
+                <div class="alert" style="margin-bottom: 20px;">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>Error!</strong> Invalid Credentials
+                </div>
+
+                <div class="login-container">
+                    <label for="email"><b>Email</b></label>
+                    <input id="email" type="email" placeholder="Enter email" name="email" required>
+
+                    <label for="password"><b>Password</b></label>
+                    <input id="password" type="password" placeholder="Enter Password" name="password" required>
+
+                    <button type="submit">Login</button>
+                    <p>Did not have a account ? <a href="/register">Register</a> </p>
+                    <p style="color: red; font-weight: bold;">Sample for Login-<br>Email: iitj.iotwebportal@gmail.com <br>Password: adminiitj</p>
+                </div>
+            </form>
+        </div>
+
+
+        <script>
+            let form = document.querySelector(".form");
+            form.addEventListener('submit', formSubmit);
+            async function formSubmit(e) {
+                e.preventDefault();
+
+                const email = document.getElementById('email');
+                const password = document.getElementById('password');
+                let formData = {
+                    email: email.value,
+                    password: password.value,
+                }
+
+                try {
+                    const settings = {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    };
+                    let response = await fetch('/login', settings);
+                    let data = await response.json();
+                    if (data.status != 200) {
+                        document.querySelector('.alert').style.display = 'block';
+                    }
+                    else {
+                        window.location.replace('/dashboard');
+                    }
+                } catch (err) {
+                    console.log(err);
+                }
+
+            }
+        </script>

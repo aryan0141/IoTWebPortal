@@ -1,0 +1,45 @@
+<style>
+    .alert {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+        width: 50%;
+        margin: 20px auto auto auto;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .closebtn:hover {
+        color: black;
+    }
+
+
+    .alert.success {
+        background-color: #04AA6D;
+    }
+
+    .alert.info {
+        background-color: #2196F3;
+    }
+
+    .alert.warning {
+        background-color: #ff9800;
+    }
+</style>
+
+<div class="alert <%- classs %>">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>
+        <%- title %>!
+    </strong>
+    <%- msg %>
+</div>

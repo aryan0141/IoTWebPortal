@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: rgb(249, 249, 249);
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+/*-------------------------------------Custom Scrool Bar----------------------------*/
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 6px;
+    display: none;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f96332;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    /* background: #888; */
+    background: white;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: white;
+}

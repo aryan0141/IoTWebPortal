@@ -1,0 +1,91 @@
+#edit-sensor-top-slider {
+    /* max-width: 500px; */
+    padding: 10px;
+    background-color: #f96332;
+    /* border: solid 1px white; */
+    top: 0;
+    position: fixed;
+    display: none;
+    z-index: 10;
+}
+
+#edit-sensor-top-slider fieldset {
+    border: 1px solid white;
+    padding: 5px;
+    margin: 2px;
+  }
+#edit-sensor-top-slider legend {
+    color: white;
+    font-size: 1.2rem;
+}
+
+#edit-sensor-form h1 {
+    margin: 5px 0px 0px 20px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#edit-sensor-form form {
+    /* border: 1px solid white; */
+    /* margin: 5px 20px 20px 20px; */
+    padding: 0px;
+}
+
+#edit-sensor-form-cross-btn {
+    color: white;
+    margin: 3px;
+}
+
+#edit-sensor-form-cross-btn:hover {
+    color: rgb(44, 11, 44);
+}
+
+#edit-sensor-form input[type=text], select, input[type=number] {
+    width: 100%;
+    padding: 3px;
+    outline: none;
+    margin: 4px 0px;
+    font-family: 'Montserrat', sans-serif;
+    color: #c0c0c0;
+    /* color: white; */
+    /* background-color: #f96332; */
+    border: none;
+    /* border-bottom: 2px solid white; */
+}
+
+#edit-sensor-form input[type=text], select, input[type=number]:focus {
+    color: #222;
+}
+
+#edit-sensor-form label {
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+#edit-sensor-btn {
+    border: 1px solid white;
+    color: white;
+    background: none;
+    padding: 3px 32px;
+    margin: 5px 10px 5px 5px;
+    /* width: 100%; */
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s;
+}
+
+.editSensor-categories {
+    display: grid; 
+    grid-template-columns: 50% 50%;
+}
+
+.edit-sensor-form-remaining {
+    display: grid; 
+    grid-template-columns: 28% 28% 28% 16%;
+}
+
+#edit-sensor-btn:hover {
+    background: white;
+    color: #f96332;
+}

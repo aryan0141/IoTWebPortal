@@ -1,0 +1,15 @@
+version : "3"
+services:
+  web:
+    image: "iot-web-portal-container"
+    build: .
+    command: "node server.js"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - "mongo"
+  mongo:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+

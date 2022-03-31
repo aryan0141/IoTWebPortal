@@ -1,0 +1,15 @@
+#filters {
+    margin: 60px;
+}
+#filters h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    color: #f96332;
+    /* font-weight: 500; */
+    font-weight: bold;
+}
+#filtersDiv {
+    display: grid; 
+    grid-template-columns: 50% 50%; 
+    margin: 5px;
+}

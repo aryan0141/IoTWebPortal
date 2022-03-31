@@ -1,0 +1,429 @@
+<% bodyClass='body-class' %>
+  <% cssFile='css/dashboard.css' %>
+
+
+    <!-- Top Slider to add a new sensor -->
+    <div id="add-sensor-top-slider">
+      <fieldset>
+        <legend>Add Your Sensor!</legend>
+        <div id="add-sensor-form">
+          <!-- <h1>Add Sensor</h1> -->
+          <form>
+            <div style="display: grid; grid-template-columns: 50% 50%;">
+            <div style="padding: 5px;">
+              <label for="lname">Sensor Name:</label><br>
+              <input type="text" id="sensor-name-form" name="sensor-name-form" autocomplete="off" required>
+            </div>
+            <div style="padding: 5px;">
+              <label for="lname">Location Name:</label><br>
+              <input type="text" id="sensor-location-form" name="sensor-location-form" autocomplete="off" required>
+            </div>
+
+            </div>
+            <div class="addSensor-categories">
+              <div style="padding: 5px;">
+                <label for="lname">Category:</label><br>
+                <select id="sensor-categories" name="sensor-categories" required>
+                  <option value="numerical" selected>Numerical</option>
+                  <option value="categorical">Categorical</option>
+                  <option value="alphabetical">Alphabetical</option>
+                </select>
+              </div>
+
+              <div style="padding: 5px;">
+                <label for="lname">Sensor Type:</label></label><br>
+                <select id="sensor-types" name="sensor-types" required>
+                  <option value="Temperature" selected>Temperature</option>
+                  <option value="Humidity">Humidity</option>
+                  <option value="LightIntensity">Light Intensity</option>
+                  <option value="HeartBeat">Heart Beat</option>
+                  <option value="Snow">Snow</option>
+                  <option value="GasStation">Gas Station</option>
+                  <option value="Ultrasonic">Ultrasonic</option>
+                  <option value="GasMeasure">Gas Measure</option>
+                  <option value="Garbage">Garbage</option>
+                  <option value="Pressure">Pressure</option>
+                  <option value="MPU">MPU</option>
+                  <!-- <option value="Bacteria">Bacteria</option> -->
+                  <option value="Animals">Animals</option>
+                  <option value="Water">Water</option>
+                </select>
+              </div>
+            </div>
+            <div class="add-sensor-form-remaining">
+              
+              <div style="padding: 5px;">
+                <label for="fname">Latitude&deg; :</label><br>
+                <input type="number" step="any" id="latitude" name="latitude" autocomplete="off" min="-90" max="90">
+              </div>
+              <div style="padding: 5px;">
+                <label for="lname">Longitude&deg; :</label><br>
+                <input type="number" step="any" id="longitude" name="longitude" autocomplete="off" min="-180" max="180">
+              </div>
+              <div style="padding: 5px;">
+                <label for="fname">Sensor Id:</label><br>
+                <input style="color: black;" type="text" id="sensor-id" name="sensor-id" value="" readonly>
+                <p style="color: white; font-size: 0.6rem; font-family: 'Montserrat', sans-serif;">&#42;Sensor ID cannot
+                  be
+                  changed</p>
+              </div>
+              <div style="padding: 5px;">
+                <label style="visibility: hidden;">NOT</label><br>
+                <button id="add-sensor-btn" type="submit">Add</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Create New Users Tooltip Based on Heirarchy -->
+    <div id="createUser">
+      <fieldset>
+        <legend>Add New User!</legend>
+        <form id="createUserForm">
+          <!-- <label for="email">Email</label><br> -->
+          <div style="margin: 2px;">
+            <input id="createUserForm-email" type="email" name="email" autocomplete="off"
+              placeholder="Enter Email Address" required>
+          </div>
+          <div style="margin: 2px auto;">
+            <button id="createUserForm-submit-btn" type="submit">Add User</button>
+          </div>
+        </form>
+      </fieldset>
+    </div>
+
+
+    <!-- Top slider to edit the existing sensor -->
+    <div id="edit-sensor-top-slider">
+      <fieldset>
+        <legend>Edit Your Sensor!</legend>
+        <div id="edit-sensor-form">
+          <!-- <h1>Add Sensor</h1> -->
+          <form>
+            <div style="display: grid; grid-template-columns: 50% 50%;">
+            <div style="padding: 5px;">
+              <label for="lname">Sensor Name:</label><br>
+              <input required type="text" id="edit-sensor-name-form" name="edit-sensor-name-form" autocomplete="off"
+                required>
+            </div>
+            <div style="padding: 5px;">
+              <label for="lname">Location Name:</label><br>
+              <input required type="text" id="edit-sensor-location-form" name="edit-sensor-location-form"
+                autocomplete="off" required>
+            </div>
+
+            </div>
+            <div class="editSensor-categories">
+
+
+              <div style="padding: 5px;">
+                <label for="lname">Category:</label><br>
+                <select id="edit-sensor-categories" name="edit-sensor-categories" required>
+                  <option value="numerical" selected>Numerical</option>
+                  <option value="categorical">Categorical</option>
+                  <option value="alphabetical">Alphabetical</option>
+                </select>
+              </div>
+
+              <div style="padding: 5px;">
+                <label for="lname">Sensor Type:</label></label><br>
+                <select id="edit-sensor-types" name="edit-sensor-types" required>
+                  <option value="Temperature" selected>Temperature</option>
+                  <option value="Humidity">Humidity</option>
+                  <option value="LightIntensity">Light Intensity</option>
+                  <option value="HeartBeat">Heart Beat</option>
+                  <option value="Snow">Snow</option>
+                  <option value="GasStation">Gas Station</option>
+                  <option value="Ultrasonic">Ultrasonic</option>
+                  <option value="GasMeasure">Gas Measure</option>
+                  <option value="Garbage">Garbage</option>
+                  <option value="Pressure">Pressure</option>
+                  <option value="MPU">MPU</option>
+                  <!-- <option value="Bacteria">Bacteria</option> -->
+                  <option value="Animals">Animals</option>
+                  <option value="Water">Water</option>
+                </select>
+              </div>
+            </div>
+            <div class="edit-sensor-form-remaining">
+              
+              <div style="padding: 5px;">
+                <label for="fname">Latitude&deg; :</label><br>
+                <input required type="number" step="any" id="edit-latitude" name="edit-latitude" autocomplete="off"
+                  required>
+              </div>
+              <div style="padding: 5px;">
+                <label for="lname">Longitude&deg; :</label><br>
+                <input required type="number" step="any" id="edit-longitude" name="edit-longitude" required>
+              </div>
+              <div style="padding: 5px;">
+                <label for="fname">Sensor Id:</label><br>
+                <input style="color: black;" type="text" id="edit-sensor-id" name="edit-sensor-id" value="" readonly>
+                <p style="color: white; font-size: 0.6rem; font-family: 'Montserrat', sans-serif;">&#42;Sensor ID cannot
+                  be
+                  changed</p>
+              </div>
+              <div style="padding: 5px;">
+                <label style="visibility: hidden;">NOT</label><br>
+                <button id="edit-sensor-btn" type="submit">Edit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </fieldset>
+    </div>
+
+
+    <!-- Left Coloumn containing the dufferent geo locations -->
+    <div id="left-coloumn">
+      <p style="color: white; font-size: 1.85rem; font-family: 'Staatliches', cursive; margin: auto;">IoT Web Portal
+      </p>
+      <div>
+        <p style="margin: 40px 0px 5px 0px; color: white; font-size: 0.9rem; font-family: 'Staatliches', cursive;">
+          LOCATIONS <i class="fas fa-map-marker-alt"></i>
+        </p>
+      </div>
+      <div id="mainLocationsDiv">
+        <p id="loaderGeolocations">Loading....</p>
+      </div>
+      <div style="margin: 18px 0px">
+        <a id="add-new-btn" href="/addGeolocation">Add New</a>
+      </div>
+      <div style="margin: 18px 0px">
+        <a id="sensor-verification-btn" href="/sensorVerification">Verification</a>
+      </div>
+    </div>
+
+    <!-- Tooltip for show data of sensor -->
+    <div class="sensorsDataDiv">
+      <div id="sensorsDataDivGrid">
+        <div> 
+          <h3 id="sensorNameTooltip"></h3>
+          <hr>
+          <div style="display: grid; grid-template-columns: 30% 60% 10%;">
+            <p id="sensorIdTooltip"></p>
+            <p id="sensorLocationTooltip"></p>
+            <p id="isSensorVerifiedPara"></p>
+          </div>
+          <h1 id="sensorWeightTooltip"></h1>
+          <p id="sensorTimeTooltip"></p>
+          <hr id="lower-border">
+          <div id="justRandom" style="display: flex;">
+            <p id="editBtnTooltip" title="Edit Sensor Info"><i class="fas fa-edit"></i></p>
+            <p id="deleteBtnTooltip" title="Delete Sensor"><i class="fas fa-trash-alt"></i></p>
+            <p id="createAlertBtn" title="Create Alert"><i class="fas fa-bell"></i></p>
+            <p id="exportSingleSensorData" title="Download Data"> <i class="fas fa-download"></i></p>
+          </div>
+        </div>
+        <div id="mapPlots"> </div>
+      </div>
+    </div>
+
+    <!-- Tooltip for Email Alerts -->
+    <div id="emailAlertsTooltip">
+      <!-- <div style="border: 1px solid white; padding: 5px;"> -->
+      <fieldset>
+        <legend>Create Email Alert!</legend>
+          <div id="emailAlertsTooltipPreviousAlerts">
+
+          </div>
+          <div id="createAlertTooltipForm">
+            <div style="margin: 3px;">
+              <label for="minThreshold">Min Threshold:</label><br>
+              <input id="minThreshold" type="number" name="minThreshold" value="-1000" autocomplete="off" required>
+            </div>
+            <div style="margin: 3px;">
+              <label for="maxThreshold">Max Threshold:</label><br>
+              <input id="maxThreshold" type="number" name="maxThreshold" value="1000" autocomplete="off" required>
+            </div>
+          </div>
+          <div>
+            <button onclick="createAlert(this)" id="createAlertSubmitBtn">Create</button>
+          </div>
+      </fieldset>
+      <!-- </div> -->
+    </div>
+
+    <div id="right-coloumn">
+
+      <!-------------------------------------Main Navbar-------------------------------->
+      <div id="navbar">
+        <div class="nav-items">
+          <div id="heading-text">
+            <p style="color: #f96332; font-size: 1.2rem; font-family: 'Staatliches', cursive;">DASHBOARD</p>
+          </div>
+
+          <div id="hamburgerNavbar">
+            <div id="menuToggle">
+              <input onclick="checkedFunc(this)" id="check" type="checkbox" />
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+              <ul id="menu">
+                <div style="padding: 80px 20px;">
+                  <p style="color: white; font-size: 1.85rem; font-family: 'Staatliches', cursive; margin: auto;">IoT
+                    Web
+                    Portal
+                  </p>
+                  <div>
+                    <p
+                      style="margin: 40px 0px 5px 0px; color: white; font-size: 0.9rem; font-family: 'Staatliches', cursive;">
+                      LOCATIONS <i class="fas fa-map-marker-alt"></i>
+                    </p>
+                  </div>
+                  <div id="navbarLocationsDiv">
+
+                  </div>
+                  <div style="margin: 18px 0px">
+                    <a id="add-new-btn-hamburger" href="/addGeolocation">Add New</a>
+                  </div>
+                  <div style="margin: 18px 0px">
+                    <a id="sensor-verification-btn-hamburger" href="/sensorVerification">Verification</a>
+                  </div>
+                </div>
+              </ul>
+            </div>
+          </div>
+
+          <div style="float: right;">
+            <div>
+              <ul>
+                <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li id="logoutUser"><a href="#" title="Logout"><i class="fas fa-power-off"></i></li>
+                <li id="create-user-btn"><a href="#" title="Create New User" onclick="showCreateUserForm()"><i
+                      class="fas fa-user-plus"></i></a></li>
+                <li><a id="exportAllSensorDataBtn" title="Export All Sensor Data" onclick="exportData()" href="#"><i class="fas fa-download"></i></a></li>
+              </ul>
+            </div>
+            <!-- <button id="createAlertBtn" onclick="createAlertBtn()">Create Alert</button> -->
+          </div>
+          <!-- <button id="addSensor-btn" onclick="addSensorBtn()">Create Alert</button> -->
+        </div>
+      </div>
+
+
+      <!-------------------------------------Center Body--------------------------->
+
+      <div id="filters">
+        <h2><i class="fas fa-sort-amount-down"></i> Apply Filters</h2>
+        <div id="filtersDiv">
+          <div id="applyFiltersWeights" style="display: grid; grid-template-columns: 50% 50%;">
+            <div style="display: flex;">
+              <input style="margin: 0px 5px;" type="checkbox" name="25" id="25" onchange="applyFilterForWeight()">
+              <label for="25">0-25</label>
+              <div style="width: 16px; height: 16px; border-radius: 7px; background-color: rgb(0, 255, 127); margin: 0px 13px;"></div>
+            </div>
+            <div style="display: flex;">
+              <input style="margin: 0px 5px;" type="checkbox" name="50" id="50" onchange="applyFilterForWeight()">
+              <label for="50">26-50</label>
+              <div style="width: 16px; height: 16px; border-radius: 7px; background-color: rgb(255,255,49); margin: 0px 13px;"></div>
+            </div>
+            <div style="display: flex;">
+              <input style="margin: 0px 5px;" type="checkbox" name="75" id="75" onchange="applyFilterForWeight()">
+              <label for="75">51-75</label>
+              <div style="width: 16px; height: 16px; border-radius: 7px; background-color: #007FFF; margin: 0px 5px;"></div>
+            </div>
+            <div style="display: flex;">
+              <input style="margin: 0px 5px;" type="checkbox" name="100" id="100" onchange="applyFilterForWeight()">
+              <label for="100">76-100</label>
+              <div style="width: 16px; height: 16px; border-radius: 7px; background-color: rgb(220, 20, 60); margin: 0px 5px;"></div>
+            </div>
+          </div>
+          <div id="applyFiltersSensors" style="padding: 5px;">
+            <label for="lname">Sensor Type:</label><br>
+            <select id="filter-sensor-types" onChange="applyFilter(this)" name="filter-sensor-types">
+              <option value="All Sensors" selected>All Sensors</option>
+              <option value="Temperature">Temperature</option>
+              <option value="Humidity">Humidity</option>
+              <option value="LightIntensity">Light Intensity</option>
+              <option value="HeartBeat">Heart Beat</option>
+              <option value="Snow">Snow</option>
+              <option value="GasStation">Gas Station</option>
+              <option value="Ultrasonic">Ultrasonic</option>
+              <option value="GasMeasure">Gas Measure</option>
+              <option value="Garbage">Garbage</option>
+              <option value="Pressure">Pressure</option>
+              <option value="MPU">MPU</option>
+              <option value="Animals">Animals</option>
+              <option value="Water">Water</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      
+      <div id="data">
+        <div id="imageButtons">
+          <button id="addSensor-btn" onclick="addSensorBtn()">Add Sensor</button>
+          <button onclick="showGeoMap()" id="geoMapBtn">Geo Map</button>
+          <button id="show-img-map" onclick="showImageMap()">Image Map</button>
+          <div id="coords">0, 0</div>
+        </div>
+
+        <div id="loaderSensorDiv" style="display: none; position: absolute;">
+          <div style="display: flex;">
+            <div id="loaderSensor"> </div>
+            <p style="margin: auto 5px;"> Loading Sensors... </p>
+          </div>
+        </div>
+        <div>
+          <img id="inside-map" alt="img" src="/img/loader.gif">
+
+          <div id='geoMap'> </div>
+
+
+          <form id="insideImage" style="display: none;" action="/uploadSensorImage" method="POST"
+            enctype="multipart/form-data">
+            <input type="hidden" name="geolocation" id="geolocation-form">
+            <div class="image-btn-and-dragger">
+              <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add
+                Image</button>
+              <div class="image-upload-wrap">
+                <input class="file-upload-input" name="img" type='file' onchange="readURL(this);" accept="image/*"
+                  required />
+                <div class="drag-text">
+                  <h3>Drag and drop a file or select add Image</h3>
+                </div>
+              </div>
+            </div>
+            <div class="file-upload-content">
+              <img class="file-upload-image" src="#" alt="your image" />
+              <div class="image-title-wrap">
+                <button type="button" onclick="removeUpload()" class="remove-image">Remove
+                  <button type="submit" class="remove-image">Upload</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+
+      </div>
+
+      <!----------------------------------------Footer------------------------------->
+      <footer>
+        <div id="socialIcons">
+          <ul>
+            <li><a href="https://www.instagram.com/insta_iitj2019/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://github.com/aryan0141/IotWebPortal" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="mailto:iitj.iotwebportal@gmail.com?cc=other@domain.com"><i class="far fa-envelope"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/cse-iitj/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </footer>
+
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#coords").css({ 'min-width': ($("#addSensor-btn").width() + 'px') });
+      });
+    </script>
+
+
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/extra.js"></script>

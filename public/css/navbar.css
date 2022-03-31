@@ -1,0 +1,63 @@
+/* Main Navbar */
+@import url('../node_modules/font-awesome/css/font-awesome.min.css');
+
+
+#navbar {
+    /* height: 300px; */
+    top: 0;
+    background-color: rgb(249, 249, 249);
+}
+
+.nav-items {
+    display: grid;
+    grid-template-columns: 55% 45%;
+}
+
+#heading-text {
+    float: left;
+    margin: auto 5px;
+}
+
+#hamburgerNavbar {
+    display: none;
+    /* visibility: hidden; */
+}
+
+.nav-items a {
+    /* padding: 5px 30px; */
+    /* margin: auto 10px; */
+    text-decoration: none;
+    color: #f96332;
+    font-size: 1.4rem;
+}
+
+#navbar li {
+    color: white;
+    float: left;
+    position: relative;
+    padding: 16px;
+    overflow: hidden;
+}
+
+#navbar li::after {
+    background-color: #f96332;
+    content: "";
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    /* top: 0; */
+    transition: width 0.45s ease 0s;
+    position: absolute;
+}
+
+#navbar li:hover::after {
+    width: 100%;
+}
+
+#navbar ul {
+    list-style: none;
+    padding: 0;
+    /* display: inline; */
+    float: right;
+}

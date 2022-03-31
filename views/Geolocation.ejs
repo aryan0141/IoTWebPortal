@@ -1,0 +1,106 @@
+<% bodyClass='' %>
+    <% cssFile='css/geolocation.css' %>
+
+
+        <!-- Map Box CDN -->
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <!-- Alerts -->
+        <div id="success-alert-msg" style="display: none;">
+            <%- include('./Partials/alerts.ejs',classs="success" ,title="Success" ,msg="New geolocation added..." ) %>
+        </div>
+
+        <div id="danger-alert-msg" style="display: none;">
+            <%- include('./Partials/alerts.ejs',classs="danger" ,title="Unsuccessful" ,msg="Something went wrong..." ) %>
+        </div>
+
+        <div id="content">
+            <div id="form">
+                <h1 style="color: white; font-size: 1.6rem;">Add New Geolocation</h1>
+                <form id="contactForm" name="contactForm">
+                    <div class="text-box">
+                        <label for="">Name</label> <br>
+                        <input type="text" name="locationName" id="locationName" required autocomplete="off">
+                    </div>
+                    <div class="text-box">
+                        <label for="">Location</label><br>
+                        <input type="text" name="location" id="location" required autocomplete="off">
+                    </div>
+                    <div class="text-box">
+                        <label for="">Latitude&#186;</label><br>
+                        <input type="number" step="any" id="latitude" name="latitude" min="-90" max="90"
+                            autocomplete="off">
+                    </div>
+                    <div class="text-box">
+                        <label for="">Longitude&#186;</label><br>
+                        <input type="number" step="any" id="longitude" name="longitude" min="-180" max="180"
+                            autocomplete="off">
+                    </div>
+
+
+                    <div style="display: flex;">
+                        <!-- <div> -->
+                            <button class="btn" type="submit">Create</button>
+                        <!-- </div> -->
+                        <!-- <div> -->
+                            <a class="btn" href="/">Go Back</a>
+                        <!-- </div> -->
+                    </div>
+                </form>
+            </div>
+            <div>
+                <div id='map'></div>
+            </div>
+        </div>
+        </div>
+
+        <script src="/js/geolocation.js"></script>
+
+        <script>
+            let form = document.querySelector('#contactForm');
+            form.addEventListener('submit', addNewGeolocation);
+            async function addNewGeolocation(e) {
+                e.preventDefault();
+                let name = document.getElementById("locationName");
+                let location = document.getElementById("location");
+                let latitude = document.getElementById("latitude");
+                let longitude = document.getElementById("longitude");
+
+                // If we don't want to give any latitudes and longitudes value-
+                if(latitude.value == "" || longitude.value == "") {
+                    latitude.value = -1;
+                    longitude.value = -1
+                }
+                let formData = {
+                    name: name.value,
+                    location: location.value,
+                    latitude: latitude.value,
+                    longitude: longitude.value,
+                };
+                try {
+                    const settings = {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    };
+                    let response = await fetch("/addGeolocation", settings);
+                    let data = await response.json();
+                    console.log(data)
+                    if (data.status && data.status === 201) {
+                        document.querySelector("#success-alert-msg").style.display = "block";
+                    }
+                    else {
+                        document.querySelector("#danger-alert-msg").style.display = "block";
+                    }
+                } catch (err) {
+                    console.log(err);
+                    document.querySelector("#danger-alert-msg").style.display = "block";
+                }
+            }
+        </script>

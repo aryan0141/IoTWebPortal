@@ -1,0 +1,81 @@
+body {
+    background-color: rgb(249, 249, 249);
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.marker {
+    background-image: url('../img/pin.png');
+    background-size: cover;
+    width: 32px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    background-color: white;
+    height: 70%;
+    width: 80%;
+    box-shadow: 1px 3px 35px rgb(0 0 0 / 0.2);
+}
+
+#form {
+    background-color: #f96332;
+    padding: 10px 20px;
+}
+
+#form input[type='text'], input[type='number'] {
+    /* background-color: #f96332; */
+    padding: 7px 3px 3px 3px;
+    outline: none;
+    width: 75%;
+    color: white;
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+}
+
+label {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    margin: 4px 0px;
+}
+
+.text-box {
+    margin: 10px 0px;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    /* margin: 0;
+	padding: 0; */
+}
+.btn {
+    border: 1px solid white;
+    color: white;
+    background: none;
+    padding: 4px 12px;
+    margin: 5px;
+    /* margin: 5px; */
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+    color: #f96332;
+}

@@ -1,0 +1,10 @@
+{
+    "_id": {
+        "$oid": "61437b40214f6a2018c8fdfe"
+    },
+    "type": "admin",
+    "name": "admin",
+    "email": "iitj.iotwebportal@gmail.com",
+    "password": "$2a$10$ysK5rA53gTyftDGD4VF21.2yZgOwDdf8mYlueysLN43paEj1e6w8C",
+    "date": "2021-07-14T05: 45: 43.101+00: 00"
+}

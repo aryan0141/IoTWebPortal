@@ -1,0 +1,66 @@
+<% bodyClass='body-class' %>
+    <% cssFile='css/signup.css' %>
+
+        <div class="signup-page">
+            <h1>Sign Up</h1>
+            <form class="form" action="/register" method="POST">
+                <div class="alert" style="margin-bottom: 20px;">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <div class="alert-data"></div>
+                </div>
+
+                <div class="signup-container">
+                    <label for="name"><b>Name</b></label>
+                    <input id="name" type="text" placeholder="Enter name" name="name" required>
+
+                    <label for="email"><b>Email</b></label>
+                    <input id="email" type="email" placeholder="Enter email" name="email" required>
+
+                    <label for="password"><b>Password</b></label>
+                    <input id="password" type="password" placeholder="Enter Password" name="password" required>
+
+                    <button type="submit">Register</button>
+                    <p>Already have a account ? <a href="/login">Login</a></p>
+                </div>
+            </form>
+        </div>
+
+
+        <script>
+            let form = document.querySelector(".form");
+            form.addEventListener('submit', formSubmit);
+            async function formSubmit(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name');
+                const email = document.getElementById('email');
+                const password = document.getElementById('password');
+                let formData = {
+                    name: name.value,
+                    email: email.value,
+                    password: password.value,
+                }
+
+                try {
+                    const settings = {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    };
+                    let response = await fetch('/register', settings);
+                    let data = await response.json();
+                    if (data.status != 200) {
+                        document.querySelector('.alert').style.display = 'block';
+                        document.querySelector('.alert-data').innerHTML = data.msg;
+                    } else {
+                        window.location.replace('/dashboard');
+                    }
+                } catch (err) {
+                    console.log(err);
+                }
+
+            }
+        </script>

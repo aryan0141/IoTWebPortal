@@ -1,0 +1,5 @@
+{
+  "MongoURI-Production": "mongodb+srv://test:test@cluster0.inmn3.mongodb.net/project?retryWrites=true&w=majority",
+  "MongoURI": "mongodb+srv://aryan:aryan@cluster0.udbsm.mongodb.net/IotWebPortal?retryWrites=true&w=majority"
+}
+

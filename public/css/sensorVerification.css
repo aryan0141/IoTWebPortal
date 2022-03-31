@@ -1,0 +1,105 @@
+#sensorVerificationMainDiv {
+	margin: 20px auto;
+	width: 70vw;
+}
+
+.sensorVerificationCard {
+	border: 2px solid #f96332;
+	padding: 20px;
+	margin: 10px 0px;
+	display: grid;
+	grid-template-columns: 40% 40% 20%;
+	/*background: #f4f4f4;*/
+}
+
+.sensorVerificationCard p {
+	font-size: 0.95rem;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#acceptBtn {
+	margin: auto 5px;
+	color: rgb(50, 205, 50);
+	background: none;
+	border: 1px solid rgb(50, 205, 50);
+	transition: 0.4s;
+	padding: 5px 15px;
+	font-size: 1rem;
+	cursor: pointer;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#acceptBtn:hover {
+	background: rgb(50, 205, 50);
+	transition: 0.4s;
+	color: white;
+}
+
+#declineBtn {
+	margin: auto 5px;
+	color: red;
+	background: none;
+	border: 1px solid red;
+	transition: 0.4s;
+	padding: 5px 15px;
+	font-size: 1rem;
+	cursor: pointer;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#declineBtn:hover {
+	background: red;
+	transition: 0.4s;
+	color: white;
+}
+
+#backBtn {
+	margin: 30px 0px;
+	color: #f96332;
+	border: 1px solid #f96332;
+	transition: 0.4s;
+	padding: 5px 15px;
+	font-size: 1rem;
+	font-family: 'Montserrat', sans-serif;
+	text-decoration: none;
+}
+
+#backBtn:hover {
+	background: #f96332;
+	transition: 0.4s;
+	color: white;
+}
+
+.grids {
+	background-color: #f96332;
+	margin-right: 20px;
+}
+
+.paraDivs {
+	display: flex;
+    margin: 5px;
+}
+
+#sensorVerificationLoader {
+	display: none;
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #f96332;
+  margin: 20px auto;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

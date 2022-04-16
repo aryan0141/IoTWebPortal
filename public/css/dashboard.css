@@ -17,7 +17,7 @@
 #mainLocationsDiv {
   border-bottom: 1px solid white;
   border-top: 2px solid white;
-  height: 500px;
+  height: 400px;
   overflow: auto;
   /* margin-top: 5px; */
 }

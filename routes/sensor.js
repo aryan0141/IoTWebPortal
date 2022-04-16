@@ -6,6 +6,7 @@ const auth = require("../config/auth");
 const LiveData = require("../models/LiveData");
 const GeoLocationSchema = require("../models/GeoLocations");
 const User = require("../models/User");
+const UnusedSensors = require("../models/UnusedSensors");
 
 // @ Add / Edit sensor
 router.post("/addSensor", auth, async (req, res) => {
@@ -21,12 +22,13 @@ router.post("/addSensor", auth, async (req, res) => {
     sensorName,
     latitude,
     longitude,
-    category,
+    // category,
     hRatio,
     vRatio,
     geolocation,
     location,
     sensorType,
+    microId,
   } = req.body;
 
   const findUserFromGeolocation = await GeoLocationSchema.findById(
@@ -62,11 +64,11 @@ router.post("/addSensor", auth, async (req, res) => {
           ].sensorDetail.findIndex((elm) => elm.sensorId === sensorId);
 
           if (findSensorIndex >= 0) {
-            // In this, we are actually updating a sesnor detail using their sensorId.
+            // In this, we are actually updating a sensor detail using their sensorId.
             const sensorArray = {
               sensorId: sensorId,
               sensorName: sensorName,
-              category: category,
+              // category: category,
               latitude: latitude,
               longitude: longitude,
               imageCoordinates: {
@@ -82,12 +84,12 @@ router.post("/addSensor", auth, async (req, res) => {
               findImageIndex
             ].sensorDetail[findSensorIndex] = sensorArray;
             await findUser.save();
-            return res.status(202).json(findUser);
+            return res.status(200).json(findUser);
           } else {
             const sensorArray = {
               sensorId: sensorId,
               sensorName: sensorName,
-              category: category,
+              // category: category,
               latitude: latitude,
               longitude: longitude,
               imageCoordinates: {
@@ -98,11 +100,30 @@ router.post("/addSensor", auth, async (req, res) => {
               sensorType: sensorType,
               isVerified,
             };
+
+            // Finding this sensor in unused sensors schema:
+            let findSensor = await UnusedSensors.findOne({
+              sensorId: sensorId,
+              microControllerID: microId,
+            });
+            if (findSensor) {
+              if (findSensor.isUsed == true) {
+                return res.status(202).json({ msg: "Already present" });
+              }
+              findSensor.isUsed = true;
+              await findSensor.save();
+            } else {
+              return res
+                .status(400)
+                .json({ msg: "No Sensor Found with these credentials" });
+            }
+            //END
+
             findUser.sensor[findGeoLocationIndex].data[
               findImageIndex
             ].sensorDetail.unshift(sensorArray);
             await findUser.save();
-            return res.status(202).json(findUser);
+            return res.status(200).json(findUser);
           }
         } else {
           const sensorArray = {
@@ -111,7 +132,7 @@ router.post("/addSensor", auth, async (req, res) => {
               {
                 sensorId: sensorId,
                 sensorName: sensorName,
-                category: category,
+                // category: category,
                 latitude: latitude,
                 longitude: longitude,
                 imageCoordinates: {
@@ -125,9 +146,27 @@ router.post("/addSensor", auth, async (req, res) => {
             ],
           };
 
+          // Finding this sensor in unused sensors schema:
+          let findSensor = await UnusedSensors.findOne({
+            sensorId: sensorId,
+            microControllerID: microId,
+          });
+          if (findSensor) {
+            if (findSensor.isUsed == true) {
+              return res.status(202).json({ msg: "Already present" });
+            }
+            findSensor.isUsed = true;
+            await findSensor.save();
+          } else {
+            return res
+              .status(400)
+              .json({ msg: "No Sensor Found with these credentials" });
+          }
+          //END
+
           findUser.sensor[findGeoLocationIndex].data.unshift(sensorArray);
           await findUser.save();
-          return res.status(202).json(findUser);
+          return res.status(200).json(findUser);
         }
       } else {
         const sensorArray = {
@@ -138,7 +177,7 @@ router.post("/addSensor", auth, async (req, res) => {
               {
                 sensorId: sensorId,
                 sensorName: sensorName,
-                category: category,
+                // category: category,
                 latitude: latitude,
                 longitude: longitude,
                 imageCoordinates: {
@@ -152,9 +191,28 @@ router.post("/addSensor", auth, async (req, res) => {
             ],
           },
         };
+
+        // Finding this sensor in unused sensors schema:
+        let findSensor = await UnusedSensors.findOne({
+          sensorId: sensorId,
+          microControllerID: microId,
+        });
+        if (findSensor) {
+          if (findSensor.isUsed == true) {
+            return res.status(202).json({ msg: "Already present" });
+          }
+          findSensor.isUsed = true;
+          await findSensor.save();
+        } else {
+          return res
+            .status(400)
+            .json({ msg: "No Sensor Found with these credentials" });
+        }
+        //END
+
         findUser.sensor.unshift(sensorArray);
         await findUser.save();
-        return res.status(202).json(findUser);
+        return res.status(200).json(findUser);
       }
     } else {
       const sensorArray = [
@@ -166,7 +224,7 @@ router.post("/addSensor", auth, async (req, res) => {
               {
                 sensorId: sensorId,
                 sensorName: sensorName,
-                category: category,
+                // category: category,
                 latitude: latitude,
                 longitude: longitude,
                 imageCoordinates: {
@@ -182,12 +240,30 @@ router.post("/addSensor", auth, async (req, res) => {
         },
       ];
 
+      // Finding this sensor in unused sensors schema:
+      let findSensor = await UnusedSensors.findOne({
+        sensorId: sensorId,
+        microControllerID: microId,
+      });
+      if (findSensor) {
+        if (findSensor.isUsed == true) {
+          return res.status(202).json({ msg: "Already present" });
+        }
+        findSensor.isUsed = true;
+        await findSensor.save();
+      } else {
+        return res
+          .status(400)
+          .json({ msg: "No Sensor Found with these credentials" });
+      }
+      //END
+
       const newSensor = new Sensor({
         user: mainUser,
         sensor: sensorArray,
       });
       await newSensor.save();
-      return res.status(201).json(newSensor);
+      return res.status(200).json(newSensor);
     }
   } catch (err) {
     console.log(err);
@@ -242,7 +318,7 @@ router.put("/emailalert", auth, async (req, res) => {
     } else {
       user = req.user._id;
     }
-    const findUser = await Sensor.findOne({ user : req.body.geoUser });
+    const findUser = await Sensor.findOne({ user: req.body.geoUser });
     if (findUser) {
       // If user found in sensor database
 
@@ -271,12 +347,12 @@ router.put("/emailalert", auth, async (req, res) => {
               lastEmailSent: new Date(2018, 15, 24, 10, 33, 30),
             };
 
-            var currAlertList = findUser.sensor[findGeoLocationIndex].data[
-              findImageIndex
-            ].sensorDetail[findSensorIndex].alertList
+            var currAlertList =
+              findUser.sensor[findGeoLocationIndex].data[findImageIndex]
+                .sensorDetail[findSensorIndex].alertList;
 
-            for(var i=0; i<currAlertList.length; i++) {
-              if(currAlertList[i].userEmail == currentUser.email) {
+            for (var i = 0; i < currAlertList.length; i++) {
+              if (currAlertList[i].userEmail == currentUser.email) {
                 findUser.sensor[findGeoLocationIndex].data[
                   findImageIndex
                 ].sensorDetail[findSensorIndex].alertList.splice(i, 1);
@@ -287,7 +363,7 @@ router.put("/emailalert", auth, async (req, res) => {
             findUser.sensor[findGeoLocationIndex].data[
               findImageIndex
             ].sensorDetail[findSensorIndex].alertList.push(obj);
-              
+
             await findUser.save();
 
             return res
@@ -326,12 +402,10 @@ router.put("/verifyTheSensor", auth, async (req, res) => {
     if (req.user.type == "admin") {
       user = userId;
     } else {
-      return res
-        .status(400)
-        .json({
-          msg: "Only Admins have access to verify the sensor.",
-          status: 400,
-        });
+      return res.status(400).json({
+        msg: "Only Admins have access to verify the sensor.",
+        status: 400,
+      });
     }
 
     const findUser = await Sensor.findOne({ user });

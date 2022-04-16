@@ -616,15 +616,17 @@ async function getGeolocation() {
     userDetails.forEach((user) => {
       var div = document.createElement("div");
       var clonedDiv = document.createElement("div");
-      if(currentUser.type == "admin") {
+      if (currentUser.type == "admin") {
         div.style.display = "flex";
         div.style.margin = "5px auto";
         div.style.color = "white";
         div.innerHTML = `<h4 style="margin: auto; flex-grow: 1;">${userIndex}. ${
           user.name.charAt(0).toUpperCase() + user.name.slice(1)
-        }</h4><p style="font-size: 0.8rem; margin: auto;">[${user.type.charAt(0).toUpperCase() + user.type.slice(1)}]</p>`;
+        }</h4><p style="font-size: 0.8rem; margin: auto;">[${
+          user.type.charAt(0).toUpperCase() + user.type.slice(1)
+        }]</p>`;
         mainLocationsDiv.appendChild(div);
-        clonedDiv = div.cloneNode(true)
+        clonedDiv = div.cloneNode(true);
         navbarLocationsDiv.appendChild(clonedDiv);
       }
 
@@ -779,31 +781,31 @@ async function showCreateAlertTooltip(sensorId) {
   var alertList = currSensorData.alertList;
 
   // Removes all the previous classes.
-  mainDiv.innerHTML = '';
+  mainDiv.innerHTML = "";
 
   var currUserMin = null;
   var currUserMax = null;
   let currentUser = await myDetails();
   alertList.forEach((data, index) => {
-    if(currentUser.email == data.userEmail) {
+    if (currentUser.email == data.userEmail) {
       currUserMin = data.min;
       currUserMax = data.max;
     } else {
-      var p = document.createElement('p');
-      p.style.color = "white"
+      var p = document.createElement("p");
+      p.style.color = "white";
       p.style.fontFamily = "'Montserrat', sans-serif";
       p.style.fontSize = "0.8rem";
       p.style.margin = "3px 0px";
       p.innerHTML = `	&#8226; Min: ${data.min} - Max: ${data.max}`;
       mainDiv.appendChild(p);
     }
-  })
-  if(currUserMin) {
+  });
+  if (currUserMin) {
     document.getElementById("minThreshold").value = currUserMin;
   } else {
     document.getElementById("minThreshold").value = -1000;
   }
-  if(currUserMax) {
+  if (currUserMax) {
     document.getElementById("maxThreshold").value = currUserMax;
   } else {
     document.getElementById("maxThreshold").value = 1000;
@@ -1280,16 +1282,26 @@ async function addSensorAPICall(e) {
       let longitude = document.getElementById("longitude").value;
       const location = document.getElementById("sensor-location-form").value;
       const sensorId = document.getElementById("sensor-id").value;
+      const microId = document.getElementById("microcontrollerID").value;
       let e = document.getElementById("sensor-categories");
-      const category = e.options[e.selectedIndex].value;
+      // const category = e.options[e.selectedIndex].value;
       const geolocation = geolocation_id;
       e = document.getElementById("sensor-types");
       const sensorType = e.options[e.selectedIndex].value;
 
+      if (
+        sensorName === "" ||
+        location === "" ||
+        sensorId === "" ||
+        microId == ""
+      ) {
+        alert("Please fill all the required fields");
+        return;
+      }
+
       if (latitude == "" || longitude == "") {
         latitude = -1;
         longitude = -1;
-        // alert("TMLB");
       }
 
       const formData = {
@@ -1298,12 +1310,13 @@ async function addSensorAPICall(e) {
         latitude,
         longitude,
         sensorId,
-        category,
+        // category,
         hRatio: ratio.hRatio,
         vRatio: ratio.vRatio,
         geolocation,
         location,
         sensorType,
+        microId,
       };
 
       const settings = {
@@ -1315,9 +1328,15 @@ async function addSensorAPICall(e) {
         body: JSON.stringify(formData),
       };
       let response = await fetch("/addSensor", settings);
-      let data = await response.json();
-      console.log(data);
-      window.location.replace("/dashboard");
+      if (response.status == 400) {
+        let data = await response.json();
+        alert(data.msg);
+      } else if (response.status == 202) {
+        let data = await response.json();
+        alert(data.msg);
+      } else {
+        window.location.replace("/dashboard");
+      }
     }
   } catch (err) {
     console.log(err);
@@ -1347,15 +1366,20 @@ async function editSensorAPICall(e) {
       ).value;
       const sensorId = document.getElementById("edit-sensor-id").value;
       let e = document.getElementById("edit-sensor-categories");
-      const category = e.options[e.selectedIndex].value;
+      // const category = e.options[e.selectedIndex].value;
       const geolocation = geolocation_id;
       e = document.getElementById("edit-sensor-types");
       const sensorType = e.options[e.selectedIndex].value;
 
-      if (latitude == "" || longitude == "") {
-        latitude = -1;
-        longitude = -1;
-        // alert("TMLB");
+      if (
+        sensorName === "" ||
+        location === "" ||
+        sensorId === "" ||
+        latitude == "" ||
+        longitude == ""
+      ) {
+        alert("Please fill all the required fields");
+        return;
       }
 
       const formData = {
@@ -1364,7 +1388,7 @@ async function editSensorAPICall(e) {
         latitude,
         longitude,
         sensorId,
-        category,
+        // category,
         hRatio: edit_ratio.hRatio,
         vRatio: edit_ratio.vRatio,
         geolocation,

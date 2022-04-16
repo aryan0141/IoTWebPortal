@@ -194,7 +194,7 @@ function create_UUID() {
 }
 
 function showAddSensorForm() {
-  $("#sensor-id").attr("value", create_UUID());
+  // $("#sensor-id").attr("value", create_UUID());
   $("#add-sensor-top-slider").slideDown("slow");
   $("#left-coloumn").css({ opacity: "0.4" });
   $("#right-coloumn").css({ opacity: "0.4" });

@@ -11,27 +11,34 @@
           <form>
             <div style="display: grid; grid-template-columns: 50% 50%;">
             <div style="padding: 5px;">
-              <label for="lname">Sensor Name:</label><br>
+              <label for="lname">Sensor Name&#42; :</label><br>
               <input type="text" id="sensor-name-form" name="sensor-name-form" autocomplete="off" required>
             </div>
             <div style="padding: 5px;">
-              <label for="lname">Location Name:</label><br>
+              <label for="lname">Location Name&#42; :</label><br>
               <input type="text" id="sensor-location-form" name="sensor-location-form" autocomplete="off" required>
             </div>
 
             </div>
             <div class="addSensor-categories">
-              <div style="padding: 5px;">
+
+              <!-- Currently Add Sensor Categories are disabled -->
+              <!-- <div style="padding: 5px; display: none;">
                 <label for="lname">Category:</label><br>
                 <select id="sensor-categories" name="sensor-categories" required>
                   <option value="numerical" selected>Numerical</option>
                   <option value="categorical">Categorical</option>
                   <option value="alphabetical">Alphabetical</option>
                 </select>
+              </div> -->
+
+              <div style="padding: 5px;">
+                <label for="microcontrollerID">Microcontroller ID&#42; :</label><br>
+                <input type="text" step="any" id="microcontrollerID" name="microcontrollerID">
               </div>
 
               <div style="padding: 5px;">
-                <label for="lname">Sensor Type:</label></label><br>
+                <label for="lname">Sensor Type&#42; :</label></label><br>
                 <select id="sensor-types" name="sensor-types" required>
                   <option value="Temperature" selected>Temperature</option>
                   <option value="Humidity">Humidity</option>
@@ -61,11 +68,10 @@
                 <input type="number" step="any" id="longitude" name="longitude" autocomplete="off" min="-180" max="180">
               </div>
               <div style="padding: 5px;">
-                <label for="fname">Sensor Id:</label><br>
-                <input style="color: black;" type="text" id="sensor-id" name="sensor-id" value="" readonly>
-                <p style="color: white; font-size: 0.6rem; font-family: 'Montserrat', sans-serif;">&#42;Sensor ID cannot
-                  be
-                  changed</p>
+                <label for="fname">Sensor Id&#42; :</label><br>
+                <input style="color: black;" type="text" id="sensor-id" name="sensor-id" value="">
+                <p style="color: white; font-size: 0.6rem; font-family: 'Montserrat', sans-serif;">&#42;Sensor ID must be unique.
+                </p>
               </div>
               <div style="padding: 5px;">
                 <label style="visibility: hidden;">NOT</label><br>
@@ -104,12 +110,12 @@
           <form>
             <div style="display: grid; grid-template-columns: 50% 50%;">
             <div style="padding: 5px;">
-              <label for="lname">Sensor Name:</label><br>
+              <label for="lname">Sensor Name&deg; :</label><br>
               <input required type="text" id="edit-sensor-name-form" name="edit-sensor-name-form" autocomplete="off"
                 required>
             </div>
             <div style="padding: 5px;">
-              <label for="lname">Location Name:</label><br>
+              <label for="lname">Location Name&deg; :</label><br>
               <input required type="text" id="edit-sensor-location-form" name="edit-sensor-location-form"
                 autocomplete="off" required>
             </div>
@@ -117,18 +123,22 @@
             </div>
             <div class="editSensor-categories">
 
-
-              <div style="padding: 5px;">
+              <!-- Currently Edit Sensor Categories are disabled -->
+              <!-- <div style="padding: 5px;">
                 <label for="lname">Category:</label><br>
                 <select id="edit-sensor-categories" name="edit-sensor-categories" required>
                   <option value="numerical" selected>Numerical</option>
                   <option value="categorical">Categorical</option>
                   <option value="alphabetical">Alphabetical</option>
                 </select>
-              </div>
+              </div> -->
+              <!-- <div style="padding: 5px;">
+                <label for="edit-sensor-microcontrollerID">Microcontroller ID&#42; :</label><br>
+                <input type="text" step="any" id="edit-sensor-microcontrollerID" name="microcontrollerID">
+              </div> -->
 
               <div style="padding: 5px;">
-                <label for="lname">Sensor Type:</label></label><br>
+                <label for="lname">Sensor Type&deg; :</label></label><br>
                 <select id="edit-sensor-types" name="edit-sensor-types" required>
                   <option value="Temperature" selected>Temperature</option>
                   <option value="Humidity">Humidity</option>
@@ -159,7 +169,7 @@
                 <input required type="number" step="any" id="edit-longitude" name="edit-longitude" required>
               </div>
               <div style="padding: 5px;">
-                <label for="fname">Sensor Id:</label><br>
+                <label for="fname">Sensor Id&deg; :</label><br>
                 <input style="color: black;" type="text" id="edit-sensor-id" name="edit-sensor-id" value="" readonly>
                 <p style="color: white; font-size: 0.6rem; font-family: 'Montserrat', sans-serif;">&#42;Sensor ID cannot
                   be

@@ -38,10 +38,10 @@ const SensorSchema = new mongoose.Schema({
                                     required: true
                                 }
                             },
-                            category: {
-                                type: String,
-                                required: true
-                            },
+                            // category: {
+                            //     type: String,
+                            //     required: true
+                            // },
                             latitude: {
                                 type: Number,
                                 required: true

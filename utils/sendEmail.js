@@ -1,21 +1,19 @@
 require('dotenv').config();
 
 const nodemailer = require("nodemailer");
-const password = process.env.PASSWORD
-
 
 const sendEmail = (store) => {
     const transporter = nodemailer.createTransport(
         {
             service: 'gmail',
             auth: {
-                user: 'iitj.iotwebportal@gmail.com',
-                pass: password
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD
             }
         }
     )
     const mailOptions = {
-        from: 'iitj.iotwebportal@gmail.com',
+        from: process.env.EMAIL,
         to: store.to,
         subject: `Regarding Update on your ${store.sensorName} Sensor`,
         html: `

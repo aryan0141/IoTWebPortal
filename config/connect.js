@@ -1,12 +1,11 @@
-const config = require("config");
-const MongoURI = config.get("MongoURI");
+require('dotenv').config();
 const mongoose = require("mongoose");
 
   // "MongoURI": "mongodb://127.0.0.1:27017/IotWebPortal"
 
 const DbConnect = async () => {
   try {
-    await mongoose.connect(MongoURI, {
+    await mongoose.connect(process.env.MongoURI, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,

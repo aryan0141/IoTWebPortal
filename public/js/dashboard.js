@@ -405,7 +405,7 @@ async function getSensorDetail(geolocation_id) {
         $("#insideImage").css({ display: "none" });
         $("#inside-map").css({ display: "block" });
         $("#inside-map").attr({
-          src: "https://icoconvert.com/images/noimage2.png",
+          src: "https://agrimart.in/uploads/vendor_logo_image/default.jpg",
         });
         $("#geoMap").css({ display: "none" });
         $(".permanentMarker").remove();
@@ -414,7 +414,7 @@ async function getSensorDetail(geolocation_id) {
         $("#insideImage").css({ display: "block" });
         $("#inside-map").css({ display: "none" });
         $("#inside-map").attr({
-          src: "https://icoconvert.com/images/noimage2.png",
+          src: "https://agrimart.in/uploads/vendor_logo_image/default.jpg",
         });
         $("#geoMap").css({ display: "none" });
         $(".permanentMarker").remove();
@@ -567,7 +567,7 @@ async function getGeolocation() {
         $("#insideImage").css({ display: "none" });
         $("#inside-map").css({ display: "block" });
         $("#inside-map").attr({
-          src: "https://icoconvert.com/images/noimage2.png",
+          src: "https://agrimart.in/uploads/vendor_logo_image/default.jpg",
         });
         $("#geoMap").css({ display: "none" });
         $(".permanentMarker").remove();
@@ -582,7 +582,7 @@ async function getGeolocation() {
         $("#insideImage").css({ display: "none" });
         $("#inside-map").css({ display: "block" });
         $("#inside-map").attr({
-          src: "https://icoconvert.com/images/noimage2.png",
+          src: "https://agrimart.in/uploads/vendor_logo_image/default.jpg",
         });
         $("#geoMap").css({ display: "none" });
         $(".permanentMarker").remove();

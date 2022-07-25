@@ -15,6 +15,7 @@ Used NodeJS to create a realtime sensor monitoring and alert system.
 
 - [NodeJS] - For creating REST APIs!
 - [HTML, CSS & Javascript] - For creating frontend!
+- [AWS Ec2 Instance] - For Hosting on cloud!
 
 ## Procedure
 
